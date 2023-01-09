@@ -1,6 +1,7 @@
 package com.donnut.messenger;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -22,7 +23,7 @@ public class UsersViewModel extends ViewModel {
         });
     }
 
-    public MutableLiveData<FirebaseUser> getUser() {
+    public LiveData<FirebaseUser> getUser() {
         return user;
     }
 
