@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "568585337433",
+    "project_id": "messenger-78e03",
+    "storage_bucket": "messenger-78e03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568585337433:android:39760bca0348046b040f48",
+        "android_client_info": {
+          "package_name": "com.donnut.messenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "568585337433-dj872p6j1uqlp87s5ktl55oui64nhc82.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI9xlW9au-05qnJxEHIW54x1YiPxhzeRs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "568585337433-dj872p6j1uqlp87s5ktl55oui64nhc82.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
