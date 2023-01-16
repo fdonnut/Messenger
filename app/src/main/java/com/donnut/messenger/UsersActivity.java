@@ -26,22 +26,30 @@ import java.util.Random;
 
 public class UsersActivity extends AppCompatActivity {
 
+    private static final String EXTRA_CURRENT_USER_ID = "current_id";
+
     private UsersViewModel viewModel;
 
     private RecyclerView recyclerViewUsers;
     private UsersAdapter usersAdapter;
 
-    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
+    private String currentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
-
         initViews();
+        currentUserId = getIntent().getStringExtra(EXTRA_CURRENT_USER_ID);
         viewModel = new ViewModelProvider(this).get(UsersViewModel.class);
         observeViewModel();
+        usersAdapter.setOnUserClickListener(new UsersAdapter.OnUserClickListener() {
+            @Override
+            public void onUserClick(User user) {
+                Intent intent = ChatActivity.newIntent(UsersActivity.this, currentUserId, user.getId());
+                startActivity(intent);
+            }
+        });
     }
 
     private void initViews() {
@@ -83,7 +91,21 @@ public class UsersActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static Intent newIntent(Context context) {
-        return new Intent(context, UsersActivity.class);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        viewModel.setUserOnline(true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        viewModel.setUserOnline(false);
+    }
+
+    public static Intent newIntent(Context context, String currentUserId) {
+        Intent intent =  new Intent(context, UsersActivity.class);
+        intent.putExtra(EXTRA_CURRENT_USER_ID, currentUserId);
+        return intent;
     }
 }
