@@ -47,6 +47,7 @@ public class ChatActivity extends AppCompatActivity {
         viewModelFactory = new ChatViewModelFactory(currentUserId, otherUserId);
         viewModel = new ViewModelProvider(this, viewModelFactory).get(ChatViewModel.class);
         messagesAdapter = new MessagesAdapter(currentUserId);
+        recyclerViewMessages.setAdapter(messagesAdapter);
         observeViewModel();
         imageViewSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
